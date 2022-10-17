@@ -1,0 +1,22 @@
+name: Makefile CI
+
+on:
+  workflow_dispatch: []
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: deps
+      run: sudo apt install texlive-full
+    - name: compile
+      run: make -C latex_src
+    - name: save
+      uses: actions/upload-artifact@v3
+      with:
+        name: awkbook.pdf
+        path: latex_src/awk.pdf
+        if-no-files-found: error
