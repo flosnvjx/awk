@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: deps
-      run: sudo apt install fontconfig ttf-dejavu texlive-full
+      run: sudo apt install fontconfig fonts-noto texlive-full
     - name: compile
       run: make -C latex_src
     - name: save
